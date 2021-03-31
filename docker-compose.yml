@@ -1,0 +1,18 @@
+version: "3.9"
+services:
+  ircd:
+    image: inspircd/inspircd-docker
+    environment: 
+      - INSP_NET_SUFFIX=.freedrone.com
+      - INSP_SERVER_NAME=irc.freedrone.com
+      - INSP_ADMIN_NAME=Cihan
+      - INSP_ADMIN_NICK=freedrone
+      - INSP_ADMIN_EMAIL=erancihan@gmail.com
+    user: 10000:10000
+    volumes:
+      - "./custom:/inspircd/conf.d/"
+    expose:
+      - 6667
+    network_mode: "host"
+volumes:
+  config:
